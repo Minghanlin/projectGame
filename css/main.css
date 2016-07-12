@@ -1,0 +1,122 @@
+body {
+  background-color: #2A7F62;
+  /*#538083, #89909F, #C3ACCE, #DFD9E2*/
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  background-color: #538083;
+}
+
+#start {
+  position: relative;
+  text-align: center;
+  line-height: 95px;
+  width: 275px;
+  height: 95px;
+  background-color: #DFD9E2;
+  font-size: 90px;
+  color: #538083;
+  border: 7px solid #2A7F62;
+}
+
+img {
+  height: 290px;
+  width: 105px;
+  margin-top: -20%;
+}
+
+.hole {
+  position: absolute;
+  font-size: 150px;
+  color: #DFD9E2;
+  height: 350px;
+  width: 150px;
+  -webkit-transform: rotateX(80deg);
+  -moz-transform: rotateX(80deg);
+  -ms-transform: rotateX(80deg);
+  -o-transform: rotateX(80deg);
+  transform: rotateX(80deg);
+
+}
+
+span {
+  position: absolute;
+  bottom: 0px;
+}
+
+#hole1 {
+  left: 17%;
+  top: 9%;
+}
+
+#hole2 {
+  left: 43%;
+  top: 13%;
+}
+
+#hole3 {
+  left: 67%;
+  top: 13%;
+}
+
+#hole4 {
+  left: 25%;
+  top: 27%;
+}
+
+#hole5 {
+  left: 47%;
+  top: 29%;
+}
+
+#hole6 {
+  left: 69%;
+  top: 33%;
+}
+
+#hole7 {
+  left: 57%;
+  top: 41%;
+}
+
+#hole8 {
+  left: 35%;
+  top: 43%;
+}
+
+#hole9 {
+  left: 81%;
+  top: 21%;
+}
+
+footer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+  background-color: #538083;
+  bottom: 0;
+}
+
+.score {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 95px;
+  width: 275px;
+  height: 95px;
+  background-color: #DFD9E2;
+  font-size: 45px;
+  color: #538083;
+  border: 7px solid #2A7F62;
+  margin: 0 15px 0 15px;
+
+}
