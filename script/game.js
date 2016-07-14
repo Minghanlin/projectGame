@@ -5,39 +5,69 @@ var holey = ['#hole1', '#hole2', '#hole3', '#hole4', '#hole5', '#hole6', '#hole7
 
 var interval = ['2000', '2000', '2000', '1500', '1200', '1100', '900', '500'];
 
-// $(holey[0]).html('<img src="img/mole(2).png">');
-// $(holey[1]).html('<img src="img/mole(2).png">');
-// $(holey[2]).html('<img src="img/mole(2).png">');
-// $(holey[3]).html('<img src="img/mole(2).png">');
-// $(holey[4]).html('<img src="img/mole(2).png">');
-// $(holey[5]).html('<img src="img/mole(2).png">');
-// $(holey[6]).html('<img src="img/mole(2).png">');
 
 var turn = 0;
 var playerOneScore = 0;
 var playerTwoScore = 0;
-var id1;
+var gameLoop;
 var randomHole;
 var randomTime;
 
 
+function nextClick() {
 
+  $('#start').html('Next Player Start');
+  $('#start').css('font-size', '30px');
+
+}
+
+// function backStart() {
+//   $('#start').html('Start');
+//   $('#start').css('font-size', '90px');
+// }
+
+function checkWin() {
+  if(playerOneScore > playerTwoScore) {
+    $('#start').html('Player One Wins');
+    $('#start').css('font-size', '30px');
+  } else if (playerOneScore < playerTwoScore) {
+    $('#start').html('Player Two Wins');
+    $('#start').css('font-size', '30px');
+  } else if (playerOneScore === playerTwoScore) {
+    $('#start').html('Nobody Wins!');
+    $('#start').css('font-size', '30px');
+  }
+}
+
+// to bring mole up
 
 function up(randomHole) {
 
   $(holey[randomHole]).html('<img src="img/mole(2).png">');
-  // $(holey[randomHole]).attr('src', 'img/mole(2).png');
+  $(holey[randomHole]).addClass('moleHole');
+  // $('.moleHole').css("height", "375px");
+  // $('.moleHole').css("width", "125px");
+  // $('.moleHole').css("margin-bottom", "15px");
+  // $('.moleHole').css("margin-left", "5px");
 
+  //$( this ).css( "width", "+=200" );
+  // $(holey[randomHole]).attr('src', 'img/mole(2).png');
+  //document.getElementById("myDIV").className += " anotherClass";
+//$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
 
 }
+
+// to bring mole down
 
 function down(randomHole) {
 
-  $(holey[randomHole]).html('<span>O</span>').attr('id', 'hole' + randomHole).attr('class', "hole");
+  $(holey[randomHole]).html('<span>O</span>').attr('class', "hole");
+  $(holey[randomHole]).removeClass('moleHole');
+  //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
 
 }
 
-function test() {
+function bringDown() {
 down(randomHole);
 console.log("num2  " + randomHole);
 }
@@ -52,31 +82,73 @@ function nextTurn() {
   $(holey[6]).html('<span>O</span>').attr('id', 'hole7').attr('class', "hole");
 }
 
+// Player one scores when click happens when holey[x] is mole img
+
+var holex = document.getElementsByClassName('hole');
+for (var i = 0; i < holex.length; i++) {
+  holex[i].addEventListener('click', toScore);
+}
+function toScore() {
+console.log("toScore works");
+if ($('#' + event.target.id).hasClass("moleHole")) {
+  console.log('hashole');
+  if (turn === 1) {
+    playerOneScore++;
+    $('#player1score').html(playerOneScore);
+    ($('#' + event.target.id).html('<span>O</span>').attr('class', "hole"));
+  }
+  else if (turn === 2) {
+    playerTwoScore++;
+    $('#player2score').html(playerTwoScore);
+    ($('#' + event.target.id).html('<span>O</span>').attr('class', "hole"));
+  }
 
 
+}
+}
+
+// if (turn === 1) {
+//   $('#start').html("Player 1's Turn");
+//   $('#start').css('font-size', '30px');
+// }
+// if (turn ===2) {
+//   $('#start').html("Player 2's Turn");
+//   $('#start').css('font-size', '30px');
+// }
 
 
+// click start to start game
 
 $('#start').click(startGame);
 console.log('Still working');
 
 
 function startGame() {
-  id1  = setInterval(gamePlay, 2000);
+
+  gameLoop  = setInterval(gamePlay, 2000);
 
   setTimeout(clearing, 45000);
-  turn++;
   $('#start').click(nextTurn);
-  // var stopTurn = clearInterval(gamePlay);
-  // setTimeout(stopTurn, 10000);
-  // clearTimeout(gamePlay, 10000);
-
-
+  turn++;
 }
+
+
+
+// Stop gameloop
+
 function clearing() {
-clearInterval(id1);
+clearInterval(gameLoop);
+nextClick();
 }
+
+
+
+
+
+// main gameplay loop
+
 function gamePlay() {
+
   console.log('Hello!');
 
   randomHole = [Math.floor((Math.random() * holey.length))];
@@ -85,20 +157,26 @@ function gamePlay() {
   up(randomHole);
   if($(holey[randomHole]).html('<img src="img/mole(2).png">')) {
     console.log('its up!!');
-    setTimeout(test, interval[randomTime]);
+    setTimeout(bringDown, interval[randomTime]);
     console.log("num1  " + randomHole);
   }
+  if (turn === 1) {
+    $('#start').html("Player 1's Turn");
+    $('#start').css('font-size', '30px');
+  }
+  if (turn === 2) {
+    $('#start').html("Player 2's Turn");
+    $('#start').css('font-size', '30px');
+  }
+
+  if (turn === 3) {
+    checkWin();
+  }
+
+
 }
-  // setInterval(down(randomHole), 3000);
-  // clearInterval(down(randomHole));
-  // setTimeout(down(randomHole), 2000);
 
 
-
-
-  // setInterval(gamePlay, 1000);
-  // clearInterval(id1);
-  // setTimeout(gamePlay, 10000);
 
 
 

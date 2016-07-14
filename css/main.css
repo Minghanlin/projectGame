@@ -62,58 +62,10 @@ span {
 }
 
 img {
-  height: 375px;
+  height: 355px;
   width: 125px;
-  margin-bottom: 15px;
-  margin-left: 5px;
+
 }
-
-
-
-/*#hole1 {
-  left: 17%;
-  top: 9%;
-}
-
-#hole2 {
-  left: 43%;
-  top: 13%;
-}
-
-#hole3 {
-  left: 67%;
-  top: 13%;
-}
-
-#hole4 {
-  left: 25%;
-  top: 27%;
-}
-
-#hole5 {
-  left: 47%;
-  top: 29%;
-}
-
-#hole6 {
-  left: 69%;
-  top: 33%;
-}
-
-#hole7 {
-  left: 57%;
-  top: 41%;
-}
-
-#hole8 {
-  left: 35%;
-  top: 43%;
-}
-
-#hole9 {
-  left: 81%;
-  top: 21%;
-}*/
 
 footer {
   position: absolute;
