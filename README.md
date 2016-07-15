@@ -1,10 +1,10 @@
 # projectGame
 
-Whack-a-Mole
+##Whack-a-Mole
 
   A simple whack-a-mole game where 2 players take turns to 'whack' the mole when it pops up.
 
-Game Play
+##Game Play
 
   Each players has a 45-second window to 'whack' the mole as many times as possible.
 
